@@ -1,0 +1,22 @@
+#include <bits/stdc++.h> 
+int subArrayCount(vector<int> &arr, int k) {
+    long long sum = 0;
+    int count = 0;
+
+    unordered_map<int, int> m;
+
+    for(int i=0; i<arr.size(); i++){
+        sum += arr[i];
+        int rem = (sum % k);
+
+        if(rem < 0) rem+=k;
+        if(rem == 0) count++;
+        if(m.find(rem) == m.end()) m[rem] = 1;
+        else {
+            count += m[rem];
+            m[rem]++;
+        }
+    }
+
+    return count;
+}

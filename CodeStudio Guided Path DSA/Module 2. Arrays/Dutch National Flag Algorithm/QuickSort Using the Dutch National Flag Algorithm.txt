@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+
+void quickSort(vector<int> &arr, int low, int high){ 
+    if (low < high){
+        int pivot = arr[low];
+        int i = low, j = low;
+        int k = high;
+
+        while(j <= k){
+            if(arr[j] < pivot){
+                swap(arr[i], arr[j]);
+                i++; j++;
+            } else if(arr[j] > pivot){
+                swap(arr[j], arr[k]);
+                k--;
+            } else {
+                j++;
+            }
+        }
+
+        quickSort(arr, low, i-1);
+        quickSort(arr, k+1, high);
+    }
+}
+
+vector<int> quickSortUsingDutchNationalFlag(vector<int> &arr)
+{
+    int low = 0;
+    int high = arr.size() - 1;
+    quickSort(arr, low, high);
+    return arr;
+}

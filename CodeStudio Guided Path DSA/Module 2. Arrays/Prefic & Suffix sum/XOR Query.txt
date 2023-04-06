@@ -1,0 +1,17 @@
+#include <bits/stdc++.h> 
+vector<int> xorQuery(vector<vector<int>> &queries)
+{
+	vector<int> ans;
+
+	for(auto it: queries){
+		if(it[0] == 1){
+			ans.push_back(it[1]);
+		} else {
+			for(int i=0; i<ans.size(); i++){
+				ans[i] ^= it[1];
+			}
+		}
+	}
+
+	return ans;
+}

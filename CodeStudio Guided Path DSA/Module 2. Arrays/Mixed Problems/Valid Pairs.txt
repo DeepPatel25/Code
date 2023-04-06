@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+
+bool isValidPair(vector<int> &arr, int n, int k, int m)
+{
+    if(n % 2 == 1) return false;
+
+    unordered_map<int, int> freq;
+    for(int i=0; i<n; i++) freq[arr[i]%k]++;
+
+    for(auto it = freq.begin(); it!=freq.end(); it++){
+        int A = it->first;
+        int x = (m - A + k) % k;
+
+        if(freq[A] != freq[x]) return false;
+    }
+
+    return true;
+
+    // Brute Force Approach
+
+    // if (n % 2 == 1) return false;
+
+    // for(int i=0; i<n; i++){
+    //     if(arr[i] == -1) continue;
+    //     for(int j = i+1; j<n; j++){
+    //         if(arr[j] == -1) continue;
+    //         if((arr[i] + arr[j]) % k == m){
+    //             arr[i] = -1;
+    //             arr[j] = -1;
+    //             break;
+    //         }
+    //     }
+    // }
+
+    // for(int i=0; i<n; i++){
+    //     if(arr[i] != -1){
+    //         return false;
+    //     }
+    // }
+
+    return true;
+}

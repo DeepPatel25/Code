@@ -1,0 +1,22 @@
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+from sys import stdin, stdout
+
+
+def printArrayAfterKOperations(arr, N, K):
+    if K == 0:
+        return arr
+
+    if K%2 != 0:
+        mx = max(arr)
+        for i in range(N):
+            arr[i] = (mx - arr[i])
+    else:
+        mn = min(arr)
+        for i in range(N):
+            arr[i] = (arr[i] - mn)
+
+    return arr

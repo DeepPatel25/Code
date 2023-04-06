@@ -1,0 +1,66 @@
+#include <bits/stdc++.h> 
+
+int f(int i, int j, vector<vector<int>> &matrix, vector<vector<int>> &dp){
+    if(j < 0 || j >= matrix[0].size())
+        return -1e9;
+
+    if(i==0) 
+        return dp[i][j] = matrix[i][j];
+
+    if(dp[i][j] != -1) return dp[i][j];
+
+    int ludg = matrix[i][j] + f(i-1, j-1, matrix, dp);
+    int up = matrix[i][j] + f(i-1, j, matrix, dp);
+    int rudg = matrix[i][j] + f(i-1, j+1, matrix, dp);
+
+    return dp[i][j] = max(ludg, max(up, rudg));
+}
+
+int getMaxPathSum(vector<vector<int>> &matrix)
+{
+    // Recursion Approach
+
+    // int maxi = INT_MIN;
+    // int n = matrix.size();
+    // int m = matrix[0].size();
+
+    // vector<vector<int>> dp(n, vector<int>(m, -1));
+
+    // for(int i=0; i<m; i++){
+    //     maxi = max(maxi, f(n-1, i, matrix, dp));
+    // }
+
+    // return maxi;
+
+    // Iterative Approach
+
+    int n = matrix.size();
+    int m = matrix[0].size();
+
+    vector<int> prev(m, -1);
+
+    for(int i=0; i<m; i++)
+        prev[i] = matrix[0][i];
+
+    for(int i=1; i<n; i++){
+        vector<int> curr(m);
+        for(int j=0; j<m; j++){
+            int up = matrix[i][j] + prev[j];
+            int ld, rd;
+            if(j-1 < 0) ld = -1e9;
+            else ld = matrix[i][j] + prev[j-1];
+            if(j+1 >= m) rd = -1e9;
+            else rd = matrix[i][j] + prev[j+1];
+
+            curr[j] = max(up, max(ld, rd));
+        }
+        prev = curr;
+    }
+
+    int maxi = prev[0];
+    for(int i=1; i<m; i++){
+        maxi = max(maxi, prev[i]);
+    }
+
+    return maxi;
+}
