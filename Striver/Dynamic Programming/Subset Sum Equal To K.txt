@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+
+bool f(int idx, int target, vector<int> &arr, vector<vector<int>> &dp){
+    if(target == 0) return true;
+    if(idx == 0) return (arr[0] == target);
+    if(dp[idx][target] != -1) return dp[idx][target];
+
+    bool notTake = f(idx-1, target, arr, dp);
+    bool take =  false;
+    if(arr[idx] <= target) take = f(idx-1, target-arr[idx], arr, dp);
+
+    return dp[idx][target] = notTake | take;
+}
+
+bool subsetSumToK(int n, int k, vector<int> &arr) {
+    // Recursion is Best Solution
+    // vector<vector<int>> dp(n, vector<int>(k+1, -1));
+    // return f(n-1, k, arr, dp);
+
+    vector<vector<bool>> dp(n, vector<bool>(k+1, 0));
+    for(int i=0; i<n; i++) dp[i][0] = true;
+    dp[0][arr[0]] = true;
+
+    for(int idx=1; idx<n; idx++){
+        for(int target=1; target<=k; target++){
+            bool notTake = dp[idx-1][target];
+            bool take =  false;
+            if(arr[idx] <= target) take = dp[idx-1][target-arr[idx]];
+
+            dp[idx][target] = notTake | take;
+        }
+    }
+
+    return dp[n-1][k];
+}

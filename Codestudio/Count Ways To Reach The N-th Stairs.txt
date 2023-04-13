@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+#define mod 1000000007
+
+int f(int i, vector<long long> &dp){
+    if(i == 0) return 1;
+    if(i < 0) return 0;
+    if(dp[i]!=-1) return dp[i];
+    return dp[i] = (f(i-1, dp) + f(i-2, dp)) % mod;
+}
+
+int countDistinctWays(int n) {
+    // vector<long long> dp(n+1, -1);
+    // return f(n, dp);
+
+    if(n == 0 || n == 1) return 1;
+    if(n == 2) return 2;
+
+    int a = 1;
+    int b = 2;
+
+    for(int i = 3; i <= n; i++){
+        int c = (a + b) % mod;
+        a = b;
+        b = c;
+    }
+
+    return b;
+}
