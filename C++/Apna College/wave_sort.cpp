@@ -22,11 +22,11 @@ void waveSort(int arr[], int n)
 
 int main()
 {
-    int arr[] = {1, 3, 4, 7, 5, 6, 2};
+    int arr[] = {-4, 2, 9, 2, 3, -9, -5, -10, 10, 9};
 
-    waveSort(arr, 7);
+    waveSort(arr, 10);
 
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < 10; i++)
         cout << arr[i] << " ";
 
     return 0;

@@ -1,0 +1,32 @@
+#include <bits/stdc++.h> 
+#include <bits/stdc++.h> 
+void setZeros(vector<vector<int>> &matrix)
+{
+	int a, b;
+    int n = matrix.size();
+    int m = matrix[0].size();
+    
+    vector<pair<int,int>> ans;
+    for(int row=0; row<n; row++){
+        for(int col=0; col<m; col++){
+            if(matrix[row][col]==0){
+                ans.push_back({row, col});
+            }
+        }
+    }
+    
+    for(int i=0; i<ans.size(); i++){
+        int rowidx = ans[i].first;
+        int colidx = ans[i].second;
+        int row = 0;
+        int col = 0;
+        
+        while(col<m){
+            matrix[rowidx][col++] = 0;
+        }
+        
+        while(row<n){
+            matrix[row++][colidx] = 0;
+        }
+    }
+}
