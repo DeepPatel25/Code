@@ -1,0 +1,15 @@
+#include <bits/stdc++.h> 
+
+void reverseArr(vector<int> &arr, int m , int n){
+    while(m<=n){
+        swap(arr[m], arr[n]);
+        m++;
+        n--;
+    }
+}
+
+void reverseArray(vector<int> &arr , int m)
+{
+	int n = arr.size();
+    reverseArr(arr, m+1, n-1);
+}
