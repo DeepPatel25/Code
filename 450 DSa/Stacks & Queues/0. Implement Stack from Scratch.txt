@@ -1,0 +1,40 @@
+#include <bits/stdc++.h> 
+// Stack class.
+class Stack {
+    
+public:
+    vector<int> st;
+    int idx;
+    int capacity;
+
+    Stack(int capacity) {
+        st.resize(capacity);
+        idx = 0;
+        this->capacity = capacity;
+    }
+
+    void push(int num) {
+        if(idx == capacity) return;
+        st[idx++] = num;
+    }
+
+    int pop() {
+        if(idx == 0) return -1;
+        return st[--idx];
+    }
+    
+    int top() {
+        if(idx == 0) return -1;
+        return st[idx - 1];
+    }
+    
+    int isEmpty() {
+        return idx == 0;
+    }
+    
+    int isFull() {
+        if(idx == capacity) return 1;
+        return 0;
+    }
+    
+};

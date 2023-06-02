@@ -1,0 +1,34 @@
+#include <bits/stdc++.h> 
+/*
+Following is the structure of Tree Node
+
+class TreeNode 
+{
+   public:
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+
+    TreeNode(int val) 
+    {
+        this->val = val;
+        left = NULL;
+        right = NULL;
+    }
+};
+*/
+
+void preOrder(TreeNode *root, vector<int> &vi){
+    if(root == NULL) return;
+
+    vi.emplace_back(root->val);
+    preOrder(root->left, vi);
+    preOrder(root->right, vi);
+}
+
+vector<int> preorderTraversal(TreeNode* root)
+{
+    vector<int> vi;
+    preOrder(root, vi);
+    return vi;
+}
