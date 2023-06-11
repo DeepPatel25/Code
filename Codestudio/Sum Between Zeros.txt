@@ -1,0 +1,34 @@
+/****************************************************************
+
+    Following is the class structure of the Node class:
+
+        class Node
+        {
+        public:
+                int data;
+                Node *next;
+                Node(int data)
+                {
+                        this->data = data;
+                        this->next = NULL;
+                }
+        };
+
+*****************************************************************/
+
+Node* sumBetweenZeroes(Node* head) 
+{
+    Node* temp = head->next;
+    Node* curr = head;
+
+    while(temp) {
+            curr->data += temp->data;
+            if(!temp->data) {
+                    curr->next = temp->next ? temp : nullptr;
+                    curr = curr->next;
+            }
+            temp = temp->next;
+    }
+
+    return head;
+}

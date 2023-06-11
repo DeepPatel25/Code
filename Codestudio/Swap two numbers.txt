@@ -1,0 +1,6 @@
+#include <bits/stdc++.h> 
+#include <utility>
+
+pair<int, int> swap(pair<int, int> swapValues) {
+    return {swapValues.second, swapValues.first};
+}
