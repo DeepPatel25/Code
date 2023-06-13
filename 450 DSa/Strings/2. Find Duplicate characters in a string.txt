@@ -1,0 +1,16 @@
+#include <bits/stdc++.h> 
+vector<pair<char,int>> duplicate_char(string s, int n){
+    vector<int> arr(256, 0);
+
+    for(int i = 0; i < n; i++)
+        arr[(int)s[i]]++;
+    
+    vector<pair<char, int>> ans;
+    for(int i = 0; i < 256; i++){
+        if(arr[i] >= 2) {
+            ans.push_back({(char)i, arr[i]});
+        }
+    }
+
+    return ans;
+}
