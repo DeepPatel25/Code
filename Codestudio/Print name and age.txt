@@ -1,0 +1,36 @@
+#include <bits/stdc++.h> 
+#include<iostream>
+
+using namespace std;
+
+class Person {
+
+    string name;
+    int age;
+
+    public:
+    void setValue(string str, int age){
+        this->name = str;
+        this->age = age;
+    }
+
+    void getValue() {
+        cout << "The name of the person is " << this->name << " and the age is " << this->age << ".";
+    }
+
+};
+
+int main() {
+
+    string str;
+    int a;
+
+    cin >> str;
+    cin >> a;
+
+    Person* p = new Person();
+    p->setValue(str, a);
+    p->getValue();
+
+    return 0;
+}

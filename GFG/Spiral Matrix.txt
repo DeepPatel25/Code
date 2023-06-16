@@ -1,0 +1,90 @@
+//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution{
+
+	public:
+	int findK(vector<vector<int>> &matrix, int n, int m, int k)
+    {
+        int row = matrix.size();
+        int col = matrix[0].size();
+
+        int left = 0, right = col - 1;
+        int top = 0, bottom = row - 1;
+
+        vector<int> ans;
+        int idx = 0;
+
+        while(top <= bottom && left <= right) {
+            
+            // Right
+            for(int i = left; i <= right; i++) {
+                idx++; 
+                if(idx == k) return matrix[top][i];
+            }
+            top++;
+
+            // Down
+            for(int i = top; i <= bottom; i++) {
+                idx++; 
+                if(idx == k) return matrix[i][right];
+            }
+            right--;
+
+            // Left
+            if(top <= bottom) {
+                for(int i = right; i >= left; i--) {
+                    idx++; 
+                    if(idx == k) return matrix[bottom][i];
+                }
+                bottom--;
+            }
+
+            // Up
+            if(left <= right) {
+                for(int i = bottom; i >= top; i--) {
+                    idx++; 
+                    if(idx == k) return matrix[i][left];
+                }
+                left++;
+            }
+        }
+
+        return -1;
+    }
+
+};
+
+//{ Driver Code Starts.
+
+int main()
+{
+    int T;
+    cin>>T;
+  
+    while(T--)
+    {
+        int n,m;
+        int k=0;
+        //cin>>k;
+        cin>>n>>m>>k;
+        vector<vector<int>> a(n, vector<int>(m, 0));
+        
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                cin>>a[i][j];
+            }
+        }
+
+        Solution obj;
+
+        cout<< obj.findK(a, n, m, k) << "\n";
+        
+       
+    }
+}
+// } Driver Code Ends

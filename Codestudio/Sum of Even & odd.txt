@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int number;
+    cin >> number;
+
+    int odd = 0;
+    int even = 0;
+
+    while(number != 0) {
+        int rem = number % 2;
+        if(rem == 0) even += number % 10;
+        else odd += number % 10;
+
+        number /= 10;
+    }
+
+    cout << even << " " << odd << endl;
+
+    return 0;
+}
