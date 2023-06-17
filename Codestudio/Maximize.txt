@@ -1,0 +1,13 @@
+#include <bits/stdc++.h>
+
+long long int maximize(int n, vector<int> x)
+{
+  long long int sum = 0;
+  sort(x.begin(), x.end(), greater<int>());
+
+  for(int i = 0; i < n; i++) {
+    sum += pow(x[i] - i, 2);
+  }
+
+  return sum;
+}

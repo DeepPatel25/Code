@@ -1,0 +1,15 @@
+#include<iostream>
+using namespace std;
+
+
+int main(){
+	int start, end, gap;
+	cin >> start >> end >> gap;
+
+	for(int i = start; i <= end; i += gap) {
+		int ans = (5 * (i - 32)) / 9;
+		cout << i << " " << ans << endl;
+	}
+}
+
+

@@ -1,0 +1,20 @@
+string findMaxScore(int n, int d, vector<int> a) {
+    int oddMax = INT_MIN;
+    int evenMAx = INT_MIN;
+
+    for(int i = 0; i < n; i++){
+        if(a[i] % 2 == 0) {
+            if(a[i] > evenMAx) evenMAx = a[i];
+        } else {
+            if(a[i] > oddMax) oddMax = a[i];
+        }
+    }
+
+    if(d % 2 == 0) {
+        if(evenMAx > oddMax) return "Yay!";
+        else return "Nay!";
+    } else {
+        if(oddMax > evenMAx) return "Yay!";
+        else return "Nay!";
+    }
+}
