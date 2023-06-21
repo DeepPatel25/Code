@@ -1,0 +1,7 @@
+#include <bits/stdc++.h> 
+int middleOfThree(int x, int y, int z)
+{
+    int arr[] = {x, y, z};
+    sort(arr, arr + 3);
+    return arr[1]; 
+}
