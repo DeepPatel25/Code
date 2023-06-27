@@ -1,0 +1,54 @@
+#include <bits/stdc++.h> 
+#include <iostream>
+using namespace std;
+
+class Car {
+    protected:
+    int noOfGear;
+    string color;
+
+    public:
+
+    Car() {
+
+    }
+    
+    Car(int gears, string col){
+        this->noOfGear = gears;
+        this->color = col;
+    }
+
+    void printCarInfo() {
+        cout << "noOfGear: " << noOfGear << endl;
+        cout << "color: " << color << endl;
+    }
+};
+
+
+class RaceCar: public Car {
+    protected:
+    int maxSpeed;
+
+    public:
+    RaceCar(int gears, string col, int speed) {
+        this->noOfGear = gears;
+        this->color = col;
+        this->maxSpeed = speed;
+    }
+
+    void printInfo() {
+        cout << "noOfGear: " << noOfGear << endl;
+        cout << "color: " << color << endl;
+        cout << "maxSpeed: " << maxSpeed << endl; 
+    }
+};
+
+
+int main() {
+    int noOfGear, maxSpeed;
+    string color;
+    cin >> noOfGear >> color >> maxSpeed;
+    RaceCar raceCar(noOfGear, color, maxSpeed);
+    raceCar.printInfo();
+    return 0;
+}
