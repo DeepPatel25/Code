@@ -1,0 +1,20 @@
+#include <bits/stdc++.h> 
+int maximumNonAdjacentSum(vector<int> &nums){
+    int n = nums.size();
+
+    if(n == 1) return nums[0];
+
+    vector<int> dp(n + 1, 0);
+    dp[0] = nums[0];
+    dp[1] = nums[1];
+
+    if(n == 2) return max(nums[0], nums[1]);
+
+    for(int i = 1; i < n; i++) {
+        int lol = dp[i - 2] + nums[i];
+        int rol = dp[i - 1];
+        dp[i] = max(lol, rol);
+    }
+
+    return dp[n - 1];
+}

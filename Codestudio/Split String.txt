@@ -1,0 +1,28 @@
+#include <bits/stdc++.h> 
+
+bool vowel(char x)
+{
+    if (x == 'a' || x == 'e' || x == 'i' || 
+        x == 'o' || x == 'u' || x == 'A' || 
+        x == 'E' || x == 'I' || x == 'O' || x == 'U')
+        return true;
+    else
+        return false;
+}
+
+bool splitString(string &str){
+    int start = 0;
+    int end = str.size() - 1;
+
+    int firstHalf = 0;
+    int secondHalf = 0;
+
+    while(start < end) {
+        if(vowel(str[start])) firstHalf++;
+        if(vowel(str[end])) secondHalf++;
+
+        start++; end--;
+    }
+
+    return firstHalf == secondHalf;
+}
