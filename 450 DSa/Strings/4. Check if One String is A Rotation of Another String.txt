@@ -1,0 +1,18 @@
+int isCyclicRotation(string &p, string &q) 
+{
+    if(p == q) return 1;
+    string x = p;
+    char ch = x[x.size() - 1];
+    x.erase(x.size() - 1, 1);
+    x.insert(0, 1, ch);
+
+    while (x != p) {
+      if (x == q)
+        return 1;
+      char ch = x[x.size() - 1];
+      x.erase(x.size() - 1, 1);
+      x.insert(0, 1, ch);
+    }
+
+    return 0;
+}

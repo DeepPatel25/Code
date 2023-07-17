@@ -1,0 +1,15 @@
+int findAllSubarraysWithGivenSum(vector<int> &arr, int k) {
+    unordered_map<int, int> mp;
+    mp[0] = 1;
+    int preSum = 0, count = 0;
+    int n = arr.size();
+
+    for(int i = 0; i < n; ++i) {
+        preSum += arr[i];
+        int remove = preSum - k;
+        count += mp[remove];
+        mp[preSum]++;
+    }
+
+    return count;
+}

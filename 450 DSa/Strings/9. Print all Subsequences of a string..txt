@@ -1,0 +1,18 @@
+#include <bits/stdc++.h> 
+
+void addSubsequence(string input, string output, vector<string> &ans) {
+	if(input.empty()) {
+		if(output.length() > 0)
+			ans.push_back(output);
+		return;
+	}
+
+	addSubsequence(input.substr(1), output + input[0], ans);
+	addSubsequence(input.substr(1), output, ans);
+}
+
+vector<string> subsequences(string str){
+	vector<string> ans;
+	addSubsequence(str, "", ans);
+	return ans;
+}
