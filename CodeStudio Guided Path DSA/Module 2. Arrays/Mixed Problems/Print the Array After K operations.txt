@@ -20,3 +20,25 @@ def printArrayAfterKOperations(arr, N, K):
             arr[i] = (arr[i] - mn)
 
     return arr
+
+#include <bits/stdc++.h> 
+vector<int> printArrayAfterKOperations(vector<int> &Arr, int N, int K) {
+	if(K == 0) return Arr;
+
+	int times = 0;
+	if(K % 2 == 0) times = 2;
+	else times = 1;
+
+	for(int i = 0; i < times; i++) {
+		int maxi = Arr[0];
+		for(int j = 0; j < N; j++) {
+			if(Arr[j] > maxi) maxi = Arr[j];
+		}
+
+		for(int j = 0; j < N; j++) {
+			Arr[j] = maxi - Arr[j];
+		}
+	}
+
+	return Arr;
+}

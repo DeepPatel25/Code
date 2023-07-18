@@ -1,0 +1,8 @@
+int nearestMulitple(int n) 
+{
+    int div = n / 10;
+    int lastDig = n % 10;
+
+    if(lastDig <= 5) return div * 10;
+    return (div + 1) * 10;
+}

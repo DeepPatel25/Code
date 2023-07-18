@@ -36,3 +36,24 @@ pair<int, int> findFirstLastPosition(vector<int> &arr, int n, int x)
 	return p;
 }
 
+
+#include <bits/stdc++.h>
+
+vector<int> searchRange(vector<int> &arr, int x)
+{
+	int n = arr.size();
+	int first = lower_bound(arr.begin(), arr.end(), x) - arr.begin();
+	int last = upper_bound(arr.begin(), arr.end(), x) - arr.begin() - 1;
+
+	vector<int> ans;
+	if(first == n || arr[first] != x) {
+		first = -1; 
+		last = -1;
+	}
+
+	ans.push_back(first);
+	ans.push_back(last);
+	return ans;
+}
+
+
