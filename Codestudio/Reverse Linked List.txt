@@ -37,3 +37,51 @@ LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head)
 
     return prev;
 }
+
+/****************************************************************
+
+    Following is the class structure of the Node class:
+
+        class Node
+        {
+        public:
+            int data;
+            Node *next;
+            Node()
+            {
+                this->data = 0;
+                next = NULL;
+            }
+            Node(int data)
+            {
+                this->data = data;
+                this->next = NULL;
+            }
+            Node(int data, Node* next)
+            {
+                this->data = data;
+                this->next = next;
+            }
+        };
+        
+
+*****************************************************************/
+
+Node* reverseLinkedList(Node *head)
+{
+    if(head->next == NULL) return head;
+    
+    Node* ptr1 = NULL;
+    Node* ptr2 = head;
+    Node* ptr3 = NULL;
+
+    while(ptr2) {
+        ptr3 = ptr2->next;
+        ptr2->next = ptr1;
+        ptr1 = ptr2;
+        ptr2 = ptr3;
+    }
+
+    head = ptr1;
+    return head;
+}

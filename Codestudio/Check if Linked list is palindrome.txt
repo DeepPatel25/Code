@@ -1,0 +1,46 @@
+/****************************************************************
+
+    Following is the class structure of the Node class:
+
+    class Node
+    {
+    public:
+        int data;
+        Node *next;
+        Node()
+        {
+            this->data = 0;
+            next = NULL;
+        }
+        Node(int data)
+        {
+            this->data = data;
+            this->next = NULL;
+        }
+        Node(int data, Node* next)
+        {
+            this->data = data;
+            this->next = next;
+        }
+    };
+
+*****************************************************************/
+
+bool isPalindrome(Node *head)
+{
+    vector<int> temp;
+    Node* curr = head;
+
+    while(curr) {
+        temp.push_back(curr->data);
+        curr = curr->next;
+    }
+
+    int start = 0, end = temp.size() - 1;
+    while(start < end) {
+        if(temp[start] != temp[end]) return false;
+        start++; end--;
+    }
+
+    return true;
+}
