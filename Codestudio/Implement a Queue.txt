@@ -1,0 +1,53 @@
+#include <bits/stdc++.h> 
+class Node {
+    public:
+        int data;
+        Node* next;
+
+        Node(int data) {
+            this->data = data;
+            this->next = NULL;
+        }
+};
+
+class Queue {
+public:
+    Node* head;
+    Node* tail;
+
+    Queue() {
+        head = NULL;
+        tail = NULL;
+    }
+
+    /*----------------- Public Functions of Queue -----------------*/
+
+    bool isEmpty() {
+        if(!head) return true;
+        return false;
+    }
+
+    void enqueue(int data) {
+        Node* newNode = new Node(data);
+        if(isEmpty()) {
+            head = newNode;
+            tail = head;
+        } else {
+            tail->next = newNode;
+            tail = tail->next;
+        }
+    }
+
+    int dequeue() {
+        if(isEmpty()) return -1;
+
+        int val = head->data;
+        head = head->next;
+        return val;
+    }
+
+    int front() {
+        if(isEmpty()) return -1;
+        return head->data;
+    }
+};

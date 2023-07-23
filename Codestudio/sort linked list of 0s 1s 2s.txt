@@ -1,0 +1,53 @@
+/*
+Following is the class structure of the Node class:
+
+class Node
+{
+public:
+    int data;
+    Node *next;
+    Node()
+    {
+        this->data = 0;
+        next = NULL;
+    }
+    Node(int data)
+    {
+        this->data = data; 
+        this->next = NULL;
+    }
+    Node(int data, Node* next)
+    {
+        this->data = data;
+        this->next = next;
+    }
+};
+*/
+
+Node* sortList(Node *head){
+    int count0 = 0, count1 = 0, count2 = 0;
+    Node* temp = head;
+
+    while(temp) {
+        if(temp->data == 0) count0++;
+        else if(temp->data == 1) count1++;
+        else count2++;
+
+        temp = temp->next;
+    }
+
+    for(temp = head; temp; temp = temp->next) {
+        if(count0) {
+            temp->data = 0;
+            count0--;
+        } else if (count1) {
+            temp->data = 1;
+            count1--;
+        } else {
+            temp->data = 2;
+            count2--;
+        }
+    }
+
+    return head;
+}
