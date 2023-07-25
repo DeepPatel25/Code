@@ -1,0 +1,14 @@
+void helper(vector<vector<int>> &vi, int n, int src, int dest, int aux) {
+    if(n == 0) return;
+
+    helper(vi, n - 1, src, aux, dest);
+    vi.push_back({src, dest});
+    helper(vi, n - 1, aux, dest, src);
+}
+
+vector<vector<int>> towerOfHanoi(int n)
+{
+    vector<vector<int>> vi;
+    helper(vi, n, 1, 3, 2);
+    return vi;
+}

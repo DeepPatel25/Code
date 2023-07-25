@@ -1,0 +1,45 @@
+//{ Driver Code Starts
+//Initial Template for C++
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+//User function Template for C++
+
+class Solution
+{
+	public:
+		string is_palindrome(int n)
+		{
+		    int num = n;
+		    int reverse = 0;
+		    
+		    while(n != 0) {
+		        int rem = n % 10;
+		        reverse = reverse * 10 + rem;
+		        n /= 10;
+		    }
+		    
+		    if(reverse == num) return "Yes";
+		    return "No";
+		}
+};
+
+//{ Driver Code Starts.
+int main(){
+    int T;
+    cin >> T;
+    while(T--)
+    {
+    	int n;
+    	cin >> n;
+    	Solution ob;
+    	string ans = ob.is_palindrome(n);
+    	cout << ans <<"\n";
+    }
+	return 0;
+}
+
+// } Driver Code Ends

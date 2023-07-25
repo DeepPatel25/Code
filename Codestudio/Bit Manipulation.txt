@@ -1,0 +1,25 @@
+int getBit(int num, int i) {
+    int mask = (1 << i - 1);
+    if(num & mask) return 1;
+    return 0;
+}
+
+int setBit(int num, int i) {
+    int mask = (1 << i - 1);
+    return num | mask;
+}
+
+int clearBit(int num, int i) {
+    int mask = ~(1 << i - 1);
+    return num & mask;
+}
+
+vector<int> bitManipulation(int num, int i){
+    vector<int> ans;
+
+    ans.push_back(getBit(num, i));
+    ans.push_back(setBit(num, i));
+    ans.push_back(clearBit(num, i));
+
+    return ans;
+}
