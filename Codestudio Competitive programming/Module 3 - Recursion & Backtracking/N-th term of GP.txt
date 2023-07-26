@@ -1,0 +1,32 @@
+
+import sys
+from sys import stdin
+
+def solve(R, N):
+    m = 10**9 + 7
+    res = 1
+    while N > 0:
+        if N & 1:
+            res = (res * R) % m
+        R = (R * R) % m
+        N >>= 1
+
+    return res % m    
+
+def nthTermOfGP(n, a, r):
+    m = 10**9 + 7
+    return (a * solve(r, n-1)) % m
+        
+
+t = int(sys.stdin.readline().strip())
+
+while(t > 0):
+    
+    n, a, r = map(int,input().split())
+    print(nthTermOfGP(n,a,r))
+    
+    t = t - 1
+    
+    
+    
+

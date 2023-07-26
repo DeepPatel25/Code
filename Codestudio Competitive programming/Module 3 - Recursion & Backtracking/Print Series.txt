@@ -1,0 +1,17 @@
+void solver(int n, int k, vector<int> &ans) {
+    if(n <= 0) {
+        ans.push_back(n);
+        return ;
+    }
+
+    ans.push_back(n);
+    solver(n - k, k, ans);
+    ans.push_back(n);
+}
+
+vector<int> printSeries(int n, int k)
+{
+    vector<int> ans;
+    solver(n, k, ans);
+    return ans;
+}

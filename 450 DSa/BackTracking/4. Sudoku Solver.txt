@@ -1,0 +1,94 @@
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+// UNASSIGNED is used for empty cells in sudoku grid 
+#define UNASSIGNED 0  
+
+// N is used for the size of Sudoku grid.  
+// Size will be NxN  
+#define N 9  
+
+
+// } Driver Code Ends
+class Solution 
+{
+    public:
+    bool isSafe(int row, int col, int digit, int grid[N][N]) {
+        for(int i = 0; i < 9; i++)
+            if(grid[row][i] == digit) return false;
+            
+        for(int i = 0; i < 9; i++)
+            if(grid[i][col] == digit) return false;
+            
+        int newRow = (row / 3) * 3;
+        int newCol = (col / 3) * 3;
+        
+        for(int i = newRow; i < newRow + 3; i++)
+            for(int j = newCol; j < newCol + 3; j++)
+                if(grid[i][j] == digit) return false;
+            
+        return true;
+    }
+    
+    bool solver(int row, int col, int grid[N][N]) {
+        if(row == 8 && col == 9) return true;
+        else if(col == 9) {
+            row++;
+            col = 0;
+        }
+        
+        if(grid[row][col] != 0) return solver(row, col + 1, grid);
+        
+        for(int digit = 1; digit <= 9; digit++) {
+            if(isSafe(row, col, digit, grid)) {
+                grid[row][col] = digit;
+                if(solver(row, col + 1, grid)) return true;
+                grid[row][col] = 0;
+            }
+        }
+        
+        return false;
+    }
+     
+    bool SolveSudoku(int grid[N][N])  
+    { 
+        return solver(0, 0, grid);
+    }
+    
+    //Function to print grids of the Sudoku.
+    void printGrid (int grid[N][N]) 
+    {
+        if(SolveSudoku(grid)) {
+            for(int i = 0; i < N; i++)
+                for(int j = 0; j < N; j++)
+                    cout << grid[i][j] << " ";
+        } else cout << "False";
+    }
+};
+
+//{ Driver Code Starts.
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		int grid[N][N];
+		
+		for(int i=0;i<9;i++)
+		    for(int j=0;j<9;j++)
+		        cin>>grid[i][j];
+		        
+		Solution ob;
+		
+		if (ob.SolveSudoku(grid) == true)  
+            ob.printGrid(grid);  
+        else
+            cout << "No solution exists";  
+        
+        cout<<endl;
+	}
+	
+	return 0;
+}
+// } Driver Code Ends
