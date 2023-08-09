@@ -35,3 +35,35 @@ vector<vector<int>> pairSum(vector<int> &arr, int s){
 
    return ans;
 }
+
+#include <bits/stdc++.h>
+
+vector<vector<int>> pairSum(vector<int> &arr, int s) {
+   int i = 0;
+   int j = arr.size() - 1;
+
+   sort(arr.begin(), arr.end());
+   vector<vector<int>> ans;
+
+   while(i < j) {
+      int sum = arr[i] + arr[j];
+
+      if(sum == s) {
+         ans.push_back({arr[i], arr[j]});
+
+         int k = j - 1;
+         while(arr[j] == arr[k] && i < k) {
+            ans.push_back({arr[i], arr[k]});
+            k--;
+         }
+
+         i++;
+      } else if(sum < s) {
+         i++;
+      } else {
+         j--;
+      }
+   }
+
+   return ans;
+}
