@@ -1,0 +1,6 @@
+#include <bits/stdc++.h> 
+
+long long evenSumTillN(int n) {
+    long long ans = (int)(n / 2);
+    return (2 * ans * (ans + 1) / 2);
+}

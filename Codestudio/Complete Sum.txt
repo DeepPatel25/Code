@@ -1,0 +1,14 @@
+#include <bits/stdc++.h> 
+vector<int> completeSum(vector<int> &a, int n) {
+    vector<int> ans(n);
+
+    int sum = 0;
+    for(int i = 0; i < n; i++) {
+        sum += a[i];
+        ans[i] = sum;
+    }
+
+    return ans;
+}
+
+

@@ -1,0 +1,40 @@
+#include <bits/stdc++.h> 
+/*
+	Tree Node class.
+
+	class BinaryTreeNode 
+	{
+		T data;
+		BinaryTreeNode<T> *left;
+		BinaryTreeNode<T> *right;
+
+		BinaryTreeNode(T data) {
+			this->data = data;
+			left = NULL;
+			right = NULL;
+		}
+	}
+*/
+
+
+long long leftSum(BinaryTreeNode<int> *root)
+{
+	long long sum = 0;
+	queue<BinaryTreeNode<int>*> q;
+	q.push(root);
+
+	while(!q.empty()) {
+		auto treeNode = q.front();
+		q.pop();
+
+		if(treeNode->left) {
+			sum += treeNode->left->data;
+			q.push(treeNode->left);
+		}
+		if(treeNode->right) {
+			q.push(treeNode->right);
+		}
+	}
+
+	return sum;
+}
