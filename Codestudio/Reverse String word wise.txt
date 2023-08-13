@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+#include <iostream>
+using namespace std;
+
+string reverseStringWordWise(string input)
+{
+    vector<string> tempStore;
+    string str = "";
+
+    for(int i = 0; i < input.length(); i++) {
+        if(input[i] == ' ') {
+            tempStore.push_back(str);
+            str = "";
+        } else {
+            str += input[i];
+        }
+
+        if(i == input.length() - 1) {
+            tempStore.push_back(str);
+        }
+    }
+
+    reverse(tempStore.begin(), tempStore.end());
+
+    str = tempStore[0];
+    for(int i = 1; i < tempStore.size(); i++) {
+        str += " " + tempStore[i];
+    }
+
+    return str;
+}
+
+int main()
+{
+    string s;
+    getline(cin, s);
+    string ans = reverseStringWordWise(s);
+    cout << ans << endl;
+}
