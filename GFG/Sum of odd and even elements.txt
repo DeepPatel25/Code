@@ -1,0 +1,38 @@
+//{ Driver Code Starts
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+
+class Solution
+{
+	public:
+		vector<int> find_sum(int n)
+		{
+		    int totalSum = n * (n + 1) / 2;
+		    int evenSum = (n / 2) * ((n / 2) + 1);
+		    int oddSum  = totalSum - evenSum;
+		    
+		    return {oddSum, evenSum};
+		}
+};
+
+//{ Driver Code Starts.
+int main(){
+    int T;
+    cin >> T;
+    while(T--)
+    {
+    	int n;
+    	cin >> n;
+    	Solution ob;
+    	vector<int> ans = ob.find_sum(n);
+    	for(auto i: ans)
+    		cout << i << " ";
+    	cout<<"\n";
+    }
+	return 0;
+}
+// } Driver Code Ends
