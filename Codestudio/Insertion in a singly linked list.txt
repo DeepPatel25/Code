@@ -1,0 +1,40 @@
+#include <bits/stdc++.h> 
+/************************************************************
+
+    Following is the linkedList class structure:
+
+    class Node {
+    public:
+        int data;
+        Node *next;
+
+        Node(int val) {
+            this->data = val;
+            next = NULL;
+        }
+        ~Node() {
+            if (next != NULL) {
+                delete next;
+            }
+        }
+};
+
+************************************************************/
+
+void insert(Node * ( & head), int n, int pos, int val) {
+    Node * newNode = new Node(val);
+
+    if(pos == 0) {
+        newNode->next = head;
+        head = newNode;
+    }
+
+    Node* temp = head;
+    for(int i = 1; i < pos; i++) {
+        temp = temp->next;
+    }
+
+    Node* curr = temp->next;
+    temp->next = newNode;
+    newNode->next = curr;
+}

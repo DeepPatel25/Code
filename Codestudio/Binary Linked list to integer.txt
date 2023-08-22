@@ -1,0 +1,36 @@
+/************************************************************
+
+    Following is the linkedList class structure:
+
+    class Node {
+    public:
+        int data;
+        Node *next;
+
+        Node(int val) {
+            this->data = val;
+            next = NULL;
+        }
+        ~Node() {
+            if (next != NULL) {
+                delete next;
+            }
+        }
+};
+
+************************************************************/
+#include <bits/stdc++.h>
+
+int binaryToInteger(int n, Node *head) {
+    int ans = 0;
+
+    Node *temp = head;
+
+    while(temp) {
+        ans = ans + temp->data * (pow(2, n - 1));
+        n--;
+        temp = temp->next;
+    }
+
+    return ans;
+}

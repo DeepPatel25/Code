@@ -1,0 +1,45 @@
+#include <bits/stdc++.h> 
+/****************************************************************
+
+    Following is the class structure of the Node class:
+
+        class Node 
+        {
+        public:
+            int value;
+            Node *next;
+            Node(int value) : value(value), next(nullptr){};
+        };
+
+*****************************************************************/
+
+Node *oddEvenLinkedList(Node *head) {
+    vector<int> oddlist;
+    vector<int> evenlist;
+
+    Node* temp = head;
+    bool flag = false;
+
+    while(temp) {
+        if(flag) {
+            evenlist.push_back(temp->value);
+        } else {
+            oddlist.push_back(temp->value);
+        }
+        flag = !flag;
+        temp = temp->next;
+    }
+
+    temp = head;
+    for(int i = 0; i < oddlist.size(); i++) {
+        temp->value = oddlist[i];
+        temp = temp->next;
+    }
+
+    for(int j = 0; j < evenlist.size(); j++) {
+        temp->value = evenlist[j];
+        temp = temp->next;
+    }
+
+    return head;
+}
