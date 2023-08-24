@@ -1,0 +1,45 @@
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution {
+  public:
+    int findPosition(int N) {
+        int setBitPos = -1;
+        int pos = 1;
+        
+        while(N != 0) {
+            int bit = N & 1;
+            
+            if(bit == 1) {
+                if(setBitPos == -1) {
+                    setBitPos = pos;
+                } else {
+                    return -1;
+                }
+            }
+            
+            pos++;
+            N >>= 1;
+        }
+        
+        return setBitPos;
+    }
+};
+
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int N;
+
+        cin>>N;
+
+        Solution ob;
+        cout << ob.findPosition(N) << endl;
+    }
+    return 0;
+}
+// } Driver Code Ends
