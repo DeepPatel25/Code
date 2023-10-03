@@ -1,0 +1,36 @@
+// Stack class.
+class Stack {
+    
+public:
+    vector<int> st;
+    int pt;
+
+    Stack(int capacity) {
+        st.resize(capacity, 0);
+        pt = 0;
+    }
+
+    void push(int num) {
+        if(pt == st.size()) return;
+        st[pt++] = num;
+    }
+
+    int pop() {
+        if(pt == 0) return -1;
+        return st[--pt]; 
+    }
+    
+    int top() {
+        if(pt == 0) return -1;
+        return st[pt - 1];
+    }
+    
+    int isEmpty() {
+        return pt == 0;
+    }
+    
+    int isFull() {
+        return pt == st.size();
+    }
+    
+};
