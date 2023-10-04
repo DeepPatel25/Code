@@ -1,0 +1,5 @@
+bool isKthBitSet(int n, int k)
+{
+    int temp = 1 << (k - 1);
+    return n & temp;
+}
