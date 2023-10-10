@@ -1,0 +1,45 @@
+//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+string merge (string s1, string s2);
+
+int main()
+{
+    int t; cin >> t;
+    while (t--)
+    {
+        string s1; cin >> s1;
+        string s2; cin >> s2;
+
+        cout << merge (s1, s2) << endl;
+    }
+}
+
+// Contributed By: Pranay Bansal
+
+// } Driver Code Ends
+
+
+
+string merge (string S1, string S2)
+{
+    string str = "";
+    int i = 0, j = 0;
+    int m = S1.length();
+    int n = S2.length();
+    
+    while(i < m && j < n) {
+        str = str + S1[i++] + S2[j++];
+    }
+    
+    while(i < m) {
+        str += S1[i++];
+    }
+    
+    while(j < n) {
+        str += S2[j++];
+    }
+    
+    return str;
+}
