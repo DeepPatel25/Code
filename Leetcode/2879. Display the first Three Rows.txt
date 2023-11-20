@@ -1,0 +1,6 @@
+import pandas as pd
+
+def selectFirstRows(employees: pd.DataFrame) -> pd.DataFrame:
+    # Head Arguments default shows 5 rows
+    # if specify number in that it will show that much rows
+    return employees.head(3)
