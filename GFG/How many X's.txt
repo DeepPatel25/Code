@@ -1,0 +1,49 @@
+//{ Driver Code Starts
+// Initial Template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+// User function Template for C++
+
+class Solution {
+  public:
+    int solver(int n, int x) {
+        if(n / 10 == 0) {
+            if(n == x) return 1;
+            return 0;
+        }
+        
+        if(n % 10 == x) {
+            return 1 + solver(n / 10, x);
+        } else {
+            return solver(n / 10, x);
+        }
+    }
+  
+    int countX(int L, int R, int X) {
+        int count = 0;
+        
+        for(int i = L + 1; i < R; i++) {
+            count += solver(i, X);
+        }
+        
+        return count;
+    }
+};
+
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int L, R, X;
+        cin >> L >> R >> X;
+        Solution ob;
+        int ans = ob.countX(L, R, X);
+        cout << ans << "\n";
+    }
+}
+
+// } Driver Code Ends
