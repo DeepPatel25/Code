@@ -1,0 +1,53 @@
+//{ Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+// User function template for C++
+class Solution{
+    public:
+    bool match(string wild, string pattern)
+    {
+        int i = 0, j = 0;
+        
+        while(i < wild.length() || j < pattern.length()) {
+            if(wild[i] == pattern[j] || wild[i] == '?' || wild[i] == '*') {
+                if(wild[i] == '*') {
+                    while(i < wild.length() && (wild[i] == '?' || wild[i] == '*')) i++;
+                    
+                    if(i == wild.length()) return true;
+                    
+                    j++;
+                    while(pattern[j] != wild[i] && j < pattern.length()) j++;
+                    
+                    if(j == pattern.length()) return false;
+                }
+                i++; j++;
+            } else return false;
+        }
+        
+        if(j < pattern.length() || i < wild.length()) return false;
+        return true;
+    }
+};
+
+//{ Driver Code Starts.
+int main()
+{
+    int t;
+    cin>>t;
+    while(t-->0)
+    {
+        string wild, pattern;
+        cin>>wild>>pattern;
+        
+        Solution ob;
+        bool x=ob.match(wild, pattern);
+        if(x)
+        cout<<"Yes\n";
+        else
+        cout<<"No\n";
+    }
+    return 0;
+}
+// } Driver Code Ends
