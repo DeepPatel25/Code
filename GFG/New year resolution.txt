@@ -1,0 +1,52 @@
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+//User function Template for C++
+
+class Solution {
+    
+    public:
+    int dp[368][2026];
+    
+    int helper(int N, int coins[], int totalSum) {
+        if(totalSum != 0 && (totalSum % 20 == 0 || totalSum % 24 == 0 || totalSum == 2024)) return 1;
+        if(N < 0 || totalSum > 2024) return 0;
+        
+        if(dp[N][totalSum] != -1) return dp[N][totalSum];
+        int take = helper(N - 1, coins, totalSum + coins[N]);
+        int notTake = helper(N - 1, coins, totalSum);
+        
+        return dp[N][totalSum] = (take | notTake);
+    } 
+    
+    int isPossible(int N , int coins[]) 
+    {
+        memset(dp, -1, sizeof(dp));
+        return helper(N - 1, coins, 0);
+    }
+    
+};
+
+
+
+
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int N;
+        
+        cin>>N;
+        int coins[N];
+        for(int i=0 ; i<N ; i++)
+            cin>>coins[i];
+
+        Solution ob;
+        cout << ob.isPossible(N,coins) << endl;
+    }
+    return 0;
+}
+// } Driver Code Ends
