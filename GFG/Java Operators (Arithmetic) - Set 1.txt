@@ -1,0 +1,43 @@
+//{ Driver Code Starts
+//Initial Template for C++
+
+#include<bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+//User function Template for C++
+
+class Solution {
+public:
+    vector<double> FindRoots(int A, int B, int C) {
+        if(((B * B) - (4 * A * C)) < 0) {
+            return {-1};    
+        }
+        
+        double plus = (-B + sqrt((B * B) - (4 * A * C))) / (2 * A);
+        double minus = (-B - sqrt((B * B) - (4 * A * C))) / (2 * A);
+        
+        return {min(plus, minus), max(plus, minus)};
+    }
+};
+
+//{ Driver Code Starts.
+int main(){
+	int tc;
+	cin >> tc;
+	while(tc--){
+		int A, B, C;
+		cin >> A >> B >> C;
+		Solution obj;
+		vector<double>ans = obj.FindRoots(A, B, C);
+		if(ans.size() == 1){
+			cout << (int)ans[0] << "\n";
+			continue;
+		}
+		for(auto i: ans)
+			cout  << fixed << setprecision(6) << i << " ";
+		cout << "\n";
+	}
+	return 0;
+}
+// } Driver Code Ends
