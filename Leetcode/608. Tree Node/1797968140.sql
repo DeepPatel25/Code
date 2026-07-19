@@ -1,0 +1,1 @@
+select * from Tree where p_id is null;

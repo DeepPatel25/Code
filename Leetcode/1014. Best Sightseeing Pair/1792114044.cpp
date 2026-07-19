@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int maxScoreSightseeingPair(vector<int>& values) {
+        // // Basic Naive Approach
+        // int maxi = 0;
+
+        // // Time Complexity - o(n2)
+        // for (int i = 0; i < values.size(); i++) {
+        //     for (int j = i + 1; j < values.size(); j++) {
+        //         // check for all values
+        //         maxi = max(maxi, values[i] + values[j] + i - j);
+        //     }
+        // }
+
+        // // return maximum value
+        // return maxi;
+
+        // Optimization Approach
+        int maxi = 0, n = values.size();
+        vector<int> prefMax(n, 0);
+        prefMax[0] = values[0];
+
+        for (int i = 1; i < n; i++) {
+            prefMax = max(prefMax[i - 1], values[i] + i);
+        }
+
+        return maxi;
+    }
+};

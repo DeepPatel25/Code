@@ -1,0 +1,1 @@
+select * from Users where email regexp '^[a-zA-Z0-9_]+@[A-Za-z]+\\.com$';

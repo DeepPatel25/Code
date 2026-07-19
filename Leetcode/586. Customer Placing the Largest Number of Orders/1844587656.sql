@@ -1,0 +1,1 @@
+select * from (select max(order_number) as o, customer_number from orders group by customer_number) as p order by p.o;
